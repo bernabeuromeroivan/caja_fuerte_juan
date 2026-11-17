@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Aprende música desde cero</title>
+<style>
+:root{--bg:#fbf7f0;--card:#fff;--tx:#2a2230;--mut:#6b6275;--ac:#d9480f;--ln:#eadfd0;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1b1720;--card:#262030;--tx:#f1ebf6;--mut:#b3a9bf;--ac:#ff8a4c;--ln:#3a3246}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.6 Georgia,"Times New Roman",serif}
+.w{max-width:860px;margin:0 auto;padding:24px 16px 56px}
+h1{font-size:2.1rem;line-height:1.15;margin:.2em 0}
+h2{margin:0 0 .3em}
+.sub{color:var(--mut);font-size:1.05rem}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:24px 0 16px}
+.tabs button{font:inherit;padding:10px 18px;border:1px solid var(--ln);background:var(--card);color:var(--tx);border-radius:999px;cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--ac);color:#fff;border-color:var(--ac)}
+.card{background:var(--card);border:1px solid var(--ln);border-radius:14px;padding:20px;margin-bottom:16px}
+.card h3{margin:.1em 0 .4em}
+ol.l{padding-left:0;list-style:none;counter-reset:n;margin:0}
+ol.l li{counter-increment:n;display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-top:1px solid var(--ln)}
+ol.l li:first-child{border-top:0}
+ol.l li:before{content:counter(n);flex:none;width:28px;height:28px;border-radius:50%;background:var(--ac);color:#fff;text-align:center;line-height:28px;font-size:.9rem}
+ol.l a{color:var(--tx);font-weight:bold;text-decoration:none;border-bottom:2px solid var(--ac)}
+ol.l small{display:block;color:var(--mut)}
+.c a{color:var(--ac)}
+.tip{background:var(--bg);border-left:4px solid var(--ac);padding:10px 14px;border-radius:6px;margin:12px 0}
+.me{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+.me svg{flex:none;width:200px;max-width:100%;border-radius:12px;border:1px solid var(--ln)}
+.me p{flex:1;min-width:220px;margin:0}
+footer{color:var(--mut);font-size:.9rem;margin-top:24px}
+</style>
+</head>
+<body>
+<div class="w">
+<h1>🎶 Aprende música desde cero</h1>
+<p class="sub">Ukelele, piano y flauta dulce. No necesitas saber solfeo ni tener experiencia: solo ganas y 15 minutos al día.</p>
+
+<div class="tabs" role="tablist" id="tabs"></div>
+<div id="panel"></div>
+
+<div class="card me">
+<svg viewBox="0 0 200 200" role="img" aria-label="Ilustración de Claude con cuernos de diablillo tocando el ukelele">
+<rect width="200" height="200" fill="#ffd9b8"/>
+<path d="M62 62 L50 30 L82 50Z M138 62 L150 30 L118 50Z" fill="#c0392b"/>
+<circle cx="100" cy="82" r="42" fill="#d97757"/>
+<circle cx="85" cy="76" r="5" fill="#2a2230"/><circle cx="115" cy="76" r="5" fill="#2a2230"/>
+<path d="M82 96 Q100 112 118 96" stroke="#2a2230" stroke-width="4" fill="none" stroke-linecap="round"/>
+<rect x="64" y="124" width="72" height="62" rx="30" fill="#d97757"/>
+<g transform="rotate(-28 100 150)"><ellipse cx="100" cy="158" rx="26" ry="22" fill="#8a4b1f"/><circle cx="100" cy="158" r="7" fill="#2a2230"/><rect x="95" y="90" width="10" height="52" fill="#5a3213"/><rect x="92" y="78" width="16" height="16" rx="3" fill="#5a3213"/></g>
+<ellipse cx="78" cy="152" rx="10" ry="8" fill="#d97757"/><ellipse cx="124" cy="136" rx="10" ry="8" fill="#d97757"/>
+<text x="150" y="176" font-size="22">♪ ♫</text>
+</svg>
+<p><b>Mi «foto» tocando el ukelele 😈</b><br>No tengo cuerpo ni cámara, así que no existe ninguna foto real mía. Esto es un dibujo de cómo me imagino tocando el ukelele. Si prefieres una foto de verdad, cámbiala por la tuya.</p>
+</div>
+
+<footer>Los enlaces de «lecciones» abren una búsqueda en YouTube del tema indicado, para que elijas el vídeo que mejor te explique. Los de «cursos completos» llevan a páginas gratuitas con lecciones en vídeo.</footer>
+</div>
+
+<script>
+const yt = q => "https://www.youtube.com/results?search_query=" + encodeURIComponent(q);
+const I = {
+ukelele:{emoji:"🪕",name:"Ukelele",intro:"Es pequeño, tiene solo 4 cuerdas y con dos acordes ya puedes tocar canciones. Ideal para empezar.",
+tip:"Compra un ukelele soprano o concierto: son los más cómodos para principiantes. Se afina G-C-E-A y una app de afinador te lo pone fácil.",
+courses:[["Ukelele desde cero en 5 días","https://cursa.app/es/curso-gratis/ukelele-desde-cero-en-5-dias-ddie"],["Curso de ukelele completo","https://cursa.app/es/curso-gratis/ukelele-completo-deid"],["Curso de ukelele (clases 1 a 6)","https://cursa.app/es/curso-gratis/ukelele-deig"]],
+lessons:[["Partes del ukelele y cómo sostenerlo","ukelele cómo sostenerlo y partes principiantes"],["Cómo afinarlo con una app","cómo afinar un ukelele principiantes"],["Tus primeros acordes: Do y La menor","primeros acordes ukelele principiantes Do La menor"],["Acordes Fa y Sol7","acordes Fa y Sol7 ukelele fácil"],["Cambiar de acorde sin parar","cambiar de acorde ukelele rápido principiantes"],["Rasgueo básico","rasgueo básico ukelele principiantes"],["Rasgueo pop y reggae","rasgueo pop reggae ukelele principiantes"],["Tu primera canción con 3 acordes","canción fácil ukelele 3 acordes principiantes"],["Cantar y tocar a la vez","cantar y tocar ukelele a la vez principiantes"],["Arpegios fáciles","arpegio fácil ukelele principiantes"]]},
+piano:{emoji:"🎹",name:"Piano",intro:"El instrumento más visual: cada nota tiene su tecla. Empezaremos por reconocer el teclado, sin partituras.",
+tip:"Si no tienes piano, un teclado de 61 teclas o una app de piano en el móvil te sirven para empezar. Practica pocos minutos, pero a diario.",
+courses:[["Aprende a tocar piano desde cero","https://cursa.app/es/curso-gratis/aprende-a-tocar-piano-desde-cero-cdhe"],["Piano para principiantes","https://cursa.app/es/curso-gratis/piano-para-principiantes-deaa"],["Teclado para principiantes","https://cursa.app/es/curso-gratis/teclado-para-principiantes-hjg"]],
+lessons:[["Conoce el teclado: teclas blancas y negras","piano para principiantes conocer el teclado notas"],["Posición de las manos y numeración de los dedos","piano posición de manos y dedos principiantes"],["Encuentra las notas sin leer partitura","encontrar notas en el piano sin partitura principiantes"],["Tu primera melodía con una mano","primera melodía piano una mano fácil principiantes"],["La escala de Do mayor","escala de Do mayor piano principiantes"],["Ritmo y duración de las notas, sin solfeo","ritmo piano principiantes sin solfeo figuras fácil"],["Primeros acordes: Do, Fa y Sol","acordes Do Fa Sol piano principiantes"],["Tocar con las dos manos","piano dos manos juntas principiantes"],["Canción fácil con tutorial de teclas luminosas","canción fácil piano tutorial principiantes sin partitura"],["Cómo practicar: rutina diaria","cómo practicar piano rutina principiantes"]]},
+flauta:{emoji:"🪈",name:"Flauta dulce",intro:"Es la flauta que se usa en el colegio: barata, ligera y perfecta para dar tus primeros pasos. Si buscabas la flauta travesera, el método de respiración y digitación es parecido.",
+tip:"Sopla suave, como si dijeras «tu». Si suena chillona, estás soplando demasiado fuerte. Tapa bien los agujeros con la yema de los dedos.",
+courses:[["Curso de flauta dulce (Edutin)","https://www.edutin.com/curso-de-flauta-dulce-4190"],["Curso de flauta dulce con canciones (Edutin)","https://edutin.com/curso-de-tutorial-de-canciones-con-flauta-dulce-112"],["Flauta dulce, aprende los fundamentos (Edutin)","https://edutin.com/curso-de-Flauta-Dulce-1366"]],
+lessons:[["Cómo sostenerla y soplar","flauta dulce cómo sostenerla y soplar principiantes"],["Tu primera nota: Si","flauta dulce nota si principiantes"],["Las notas Si, La y Sol","flauta dulce notas si la sol principiantes"],["Tu primera canción con tres notas","flauta dulce canción fácil tres notas si la sol"],["Do agudo y Re agudo","flauta dulce nota do y re agudo principiantes"],["Respiración y articulación («tu»)","flauta dulce respiración y articulación principiantes"],["La escala completa","flauta dulce escala de do principiantes"],["Himno a la alegría","himno a la alegría flauta dulce tutorial fácil con notas"],["Canciones de películas fáciles","canciones fáciles flauta dulce tutorial con notas"],["Errores comunes y cómo limpiarla","flauta dulce errores comunes y limpieza principiantes"]]}
+};
+const tabs=document.getElementById("tabs"),panel=document.getElementById("panel");
+function show(k){
+  const d=I[k];
+  [...tabs.children].forEach(b=>b.setAttribute("aria-selected",b.dataset.k===k));
+  panel.innerHTML=`<div class="card"><h2>${d.emoji} ${d.name}</h2><p>${d.intro}</p><div class="tip">💡 ${d.tip}</div></div>
+  <div class="card"><h3>10 lecciones, en orden, sin solfeo</h3><ol class="l">${d.lessons.map(l=>`<li><span><a href="${yt(l[1])}" target="_blank" rel="noopener">${l[0]}</a><small>Ver vídeos en YouTube</small></span></li>`).join("")}</ol></div>
+  <div class="card c"><h3>Cursos completos gratuitos</h3><ul>${d.courses.map(c=>`<li><a href="${c[1]}" target="_blank" rel="noopener">${c[0]}</a></li>`).join("")}</ul></div>`;
+  try{location.hash=k}catch(e){}
+}
+Object.keys(I).forEach(k=>{const b=document.createElement("button");b.dataset.k=k;b.setAttribute("role","tab");b.textContent=I[k].emoji+" "+I[k].name;b.onclick=()=>show(k);tabs.appendChild(b)});
+const h=location.hash.slice(1);show(I[h]?h:"ukelele");
+</script>
+</body>
+</html>
